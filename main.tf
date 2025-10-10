@@ -29,8 +29,7 @@ resource "azurerm_subnet" "sb" {
 
   lifecycle {
     ignore_changes = [
-      address_prefixes,
-      service_endpoints,
+      all
     ]
   }
 }
