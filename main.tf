@@ -28,8 +28,6 @@ resource "azurerm_subnet" "sb" {
   #enforce_private_link_endpoint_network_policies = var.iaas_subnet_enforce_private_link_endpoint_network_policies
 
   lifecycle {
-    ignore_changes = [
-      all
-    ]
+    ignore_changes = all
   }
 }
