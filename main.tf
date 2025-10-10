@@ -24,7 +24,7 @@ resource "azurerm_subnet" "sb" {
   name                 = "${var.name}-subnet-${count.index}-${var.env}"
   resource_group_name  = azurerm_virtual_network.vnet.resource_group_name
   virtual_network_name = azurerm_virtual_network.vnet.name
-  address_prefixes     = [ cidrsubnet(var.source_range, var.subnet_prefix_length, count.index) ]
+  address_prefixes     = [cidrsubnet(var.source_range, var.subnet_prefix_length, count.index)]
   #enforce_private_link_endpoint_network_policies = var.iaas_subnet_enforce_private_link_endpoint_network_policies
 
   lifecycle {

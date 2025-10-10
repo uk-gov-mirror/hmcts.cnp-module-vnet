@@ -52,8 +52,9 @@ variable "postgresql_subnet_cidr_blocks" {
 }
 
 variable "additional_subnets" {
-  type    = object
+  type = object
   default = {
-    name = optional(string),
+    name             = optional(string),
     address_prefixes = optional(set(string))
+  }
 }
