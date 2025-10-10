@@ -50,3 +50,10 @@ variable "postgresql_subnet_cidr_blocks" {
   type    = set(string)
   default = []
 }
+
+variable "additional_subnets" {
+  type    = object
+  default = {
+    name = optional(string)
+    address_prefixes = optional(set(string)
+}
