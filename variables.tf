@@ -52,17 +52,15 @@ variable "postgresql_subnet_cidr_blocks" {
 }
 
 variable "additional_subnets" {
-  type = list(object({
-    name           = string
-    address_prefix = string
-    delegation = list(object({
-      name = string
-      service_delegation = object({
-        name    = string
-        actions = list(string)
-      })
-    }))
+  description = "Map of additional subnets to create, keyed by the subnet name."
+  type = map(object({
+    name_override     = string
+    address_prefixes  = list(string)
+    service_endpoints = list(string)
+    delegations = optional(map(object({
+      service_name = string,
+      actions      = list(string)
+    })))
   }))
-
-  default = []
+  default = {}
 }
