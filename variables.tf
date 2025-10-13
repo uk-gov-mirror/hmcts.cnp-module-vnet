@@ -54,7 +54,7 @@ variable "postgresql_subnet_cidr_blocks" {
 variable "additional_subnets" {
   description = "Map of additional subnets to create, keyed by the subnet name."
   type = map(object({
-    address_prefixes  = list(string)
+    address_prefixes = list(string)
     delegations = map(object({
       service_name = string,
       actions      = list(string)

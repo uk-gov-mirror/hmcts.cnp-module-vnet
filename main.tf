@@ -43,12 +43,12 @@ resource "azurerm_subnet" "additional_subnets" {
   address_prefixes     = [each.value.address_prefix]
 
   dynamic "delegation" {
+    for_each = each.value.subnet.delegations != null ? each.value.subnet.delegations : {}
     content {
-      name = delegation.value.name
-
+      name = delegation.key
       service_delegation {
-        name    = delegation.value.service_delegation.name
-        actions = delegation.value.service_delegation.actions
+        name    = delegation.value.service_name
+        actions = delegation.value.actions
       }
     }
   }
