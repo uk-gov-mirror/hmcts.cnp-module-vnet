@@ -57,10 +57,10 @@ variable "additional_subnets" {
     address_prefix = string
     delegation = list(object({
       name = string
-      service_delegation = list(object({
+      service_delegation = object({
         name    = string
         actions = list(string)
-      }))
+      })
     }))
   }))
 
