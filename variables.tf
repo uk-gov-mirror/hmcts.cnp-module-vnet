@@ -55,13 +55,13 @@ variable "additional_subnets" {
   type = list(object({
     name           = string
     address_prefix = string
-    delegation = optional(object({
+    delegation = object({
       name = string
       service_delegation = list(object({
         name    = string
         actions = list(string)
       }))
-    }))
+    })
   }))
 
   default = []
