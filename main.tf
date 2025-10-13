@@ -42,6 +42,18 @@ resource "azurerm_subnet" "additional_subnets" {
   virtual_network_name = azurerm_virtual_network.vnet.name
   address_prefixes     = [each.value.address_prefix]
 
+  dynamic "delegation" {
+    for_each = lookup(each.value, "delegation", null) != null ? [each.value.delegation] : []
+    content {
+      name = delegation.value.name
+
+      service_delegation {
+        name    = delegation.value.service_delegation.name
+        actions = delegation.value.service_delegation.actions
+      }
+    }
+  }
+
   lifecycle {
     ignore_changes = [
       address_prefixes,
