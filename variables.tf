@@ -57,10 +57,10 @@ variable "additional_subnets" {
     name_override     = string
     address_prefixes  = list(string)
     service_endpoints = list(string)
-    delegations = optional(map(object({
+    delegations = map(object({
       service_name = string,
       actions      = list(string)
-    })))
+    }))
   }))
   default = {}
 }
