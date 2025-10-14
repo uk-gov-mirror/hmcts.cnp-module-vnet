@@ -60,7 +60,7 @@ variable "additional_subnets" {
     delegations = optional(map(object({
       service_name = string,
       actions      = list(string)
-    }))
-  })))
+    })))
+  }))
   default = []
 }
