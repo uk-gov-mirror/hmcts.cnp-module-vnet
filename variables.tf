@@ -56,11 +56,11 @@ variable "additional_subnets" {
   type = list(object({
     name              = string
     address_prefixes  = list(string)
-    service_endpoints = list(string)
-    delegations = map(object({
+    service_endpoints = optional(list(string))
+    delegations = optional(map(object({
       service_name = string,
       actions      = list(string)
     }))
-  }))
+  })))
   default = []
 }
